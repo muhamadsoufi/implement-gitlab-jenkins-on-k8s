@@ -8,10 +8,10 @@ spec:
     service:
       name: gitlab-clusterip-svc
       port:
-        number: 80
+        number: 443
   ingressClassName: nginx
   rules:
-  - host: gitlab.1gate1.tk
+  - host: your-dns-fqdn-or-domain.com
     http:
       paths:
       - path: /
@@ -20,4 +20,4 @@ spec:
           service:
             name: gitlab-clusterip-svc
             port:
-              number: 80
+              number: 443
