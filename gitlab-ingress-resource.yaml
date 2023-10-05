@@ -11,7 +11,7 @@ metadata:
 spec:
   tls:
     - hosts:
-      - your-dns-fqdn-or-domain.com
+      - your-dns-fqdn-or-domain.com         #for example , gitlab.yourdomain.com
       secretName: tls-secret
   defaultBackend:
     service:
@@ -20,7 +20,7 @@ spec:
         number: 443
   ingressClassName: nginx
   rules:
-  - host: your-dns-fqdn-or-domain.com
+  - host: your-dns-fqdn-or-domain.com      #for example , gitlab.yourdomain.com
     http:
       paths:
       - path: /
