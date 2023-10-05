@@ -12,9 +12,9 @@ c. make secret in type of tls and import your cert/key files in it
 
     1.1
     kubectl create secret tls tls-secret \
-  --namespace=kubernetes-dashboard \
-  --cert=/etc/letsencrypt/live/gitlab.yourdomain.com/fullchain.pem \
-  --key=/etc/letsencrypt/live/gitlab.yourdomain.com/privkey.pem
+    --namespace=kubernetes-dashboard \
+    --cert=/etc/letsencrypt/live/gitlab.yourdomain.com/fullchain.pem \
+    --key=/etc/letsencrypt/live/gitlab.yourdomain.com/privkey.pem
 
     1.2 # make a service for your gitlab using imprative command:
           kubectl expose deployment -n gitlab-ns gitlab-deployment --name=gitlab-clusterip-svc --port=443 --target-port=443
