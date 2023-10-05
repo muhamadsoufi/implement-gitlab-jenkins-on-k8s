@@ -1,9 +1,9 @@
 #In this tutorial I gather yaml file for implementing gitlab and Jenkins on kubernetes cluster.
-Including 2 scenario , first one is deploy gitlab with ingress resource and implementing ssl-tls on port 443 .
-The second scenario is to implement Jenkins with ingress resource on http without ssl-tls on port 80.
+Including 2 scenario , first one is deploy gitlab with exposing service using imprative command line and ingress resource and implementing ssl-tls on port 443 .
+The second scenario is to implement Jenkins with service and ingress resource on http without ssl-tls on port 80 and nodeport for agent connectivity.
 
 1-
-For gitlab there is to files which is deploy gitlab as a deployment with persistent volume and persistent volume claim and related service (gitlab-deployment.yaml)
+For gitlab there are 2 files which is deploy gitlab as a deployment with persistent volume and persistent volume claim (gitlab-deployment.yaml) 
 on the second file is how to implement gitlab Ingress resource based on port 443 SSL TLS. (gitlab-ingress-resource.yaml)
 Before ran into the ingress resource for gitlab you have make ssl-tls file and then provide it to the secret component , you can use valid cert or using openssl or either using lets encrypt.
 A. make dns pointer or subdomain as you need and deploy gitlab-deployment.yaml
@@ -20,7 +20,7 @@ c. make secret in type of tls and import your cert/key files in it
           kubectl expose deployment -n gitlab-ns gitlab-deployment --name=gitlab-clusterip-svc --port=443 --target-port=443
           kubectl expose deployment -n gitlab-ns gitlab-deployment --name=gitlab-clusterip-svc-ssh --port=22 --target-port=22
           
-# Now it is a time to deploy your ingress resource yaml file ==> (gitlab-ingress-resource.yaml)
+Now it is a time to deploy your ingress resource yaml file ==> (gitlab-ingress-resource.yaml)
   
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 2-
