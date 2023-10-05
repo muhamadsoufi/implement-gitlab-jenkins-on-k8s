@@ -21,20 +21,18 @@ spec:
         app: gitlab
     spec:
 
-#      tolerations:
+#for the time that you need deploy on k8s master node
+#      tolerations:          
 #        - key: "node-role.kubernetes.io/master"
 #          operator: "Exists"
 #          effect: "NoSchedule"
 
       containers:
- #       - name: test-sidecar
- #         image: busybox
- #         command: ["sleep","5000"]
         - name: web
           image: gitlab/gitlab-ce:latest
           ports:
-            - containerPort: 80
-              name: http
+            - containerPort: 443
+              name: https
             - containerPort: 22
               name: ssh
           volumeMounts:
@@ -47,7 +45,7 @@ spec:
           env:
             - name: GITLAB_OMNIBUS_CONFIG
               value: |
-                external_url 'http://88.218.17.100'
+                external_url 'http://88.218.17.100'             #this will display the url for you gitlab clonning
                 gitlab_rails['gitlab_shell_ssh_port'] = 22
           resources:
             limits:
