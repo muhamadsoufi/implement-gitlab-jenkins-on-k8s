@@ -19,7 +19,8 @@ spec:
         app: jenkins
 
     spec:
-
+    
+#for the time that you need deploy on k8s master node
 #      tolerations:
 #        - key: "node.kubernetes.io/unreachable"
 #          operator: "Exists"
@@ -29,8 +30,8 @@ spec:
       - name: jenkins
         image: jenkins/jenkins:lts
         ports:
-        - containerPort: 8080
-        - containerPort: 32001
+        - containerPort: 8080         #jenkins-ui
+        - containerPort: 32001        #jenkins-agent-inbound
         volumeMounts:
         - name: jenkins-home
           mountPath: /var/jenkins_home
@@ -69,7 +70,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-#  creationTimestamp: null
   name: jenkins-svc
   namespace: jenkins-ns
 spec:
