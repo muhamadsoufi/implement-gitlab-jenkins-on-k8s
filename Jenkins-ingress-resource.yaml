@@ -12,7 +12,7 @@ spec:
         number: 8080
   ingressClassName: nginx
   rules:
-  - host: jenkins.1gate1.tk
+  - host: you-fqdn-or-your-dns-name-or-domain.com
     http:
       paths:
       - path: /
