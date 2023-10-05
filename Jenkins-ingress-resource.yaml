@@ -12,7 +12,7 @@ spec:
         number: 8080
   ingressClassName: nginx
   rules:
-  - host: you-fqdn-or-your-dns-name-or-domain.com  #for example , gitlab.yourdomain.com
+  - host: you-fqdn-or-your-dns-name-or-domain.com  #for example , jenkins.yourdomain.com
     http:
       paths:
       - path: /
