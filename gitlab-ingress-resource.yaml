@@ -3,7 +3,16 @@ kind: Ingress
 metadata:
   name: gitlab-ui
   namespace: gitlab-ns
+  annotations:
+    nginx.ingress.kubernetes.io/secure-backends: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
+  tls:
+    - hosts:
+      - your-dns-fqdn-or-domain.com
+      secretName: tls-secret
   defaultBackend:
     service:
       name: gitlab-clusterip-svc
