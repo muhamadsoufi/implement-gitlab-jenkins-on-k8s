@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gitlab-ui
+  namespace: gitlab-ns
+spec:
+  defaultBackend:
+    service:
+      name: gitlab-clusterip-svc
+      port:
+        number: 80
+  ingressClassName: nginx
+  rules:
+  - host: gitlab.1gate1.tk
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: gitlab-clusterip-svc
+            port:
+              number: 80
